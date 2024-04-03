@@ -12,6 +12,11 @@ export const environment = {
     CHAVE: "sua-chave"
   };
 ```
+Em seguida, instale as dependencias usando um terminal para digitar o seguinte comando:
+
+```console
+npm install
+```
 
 ## Executar projeto
 
