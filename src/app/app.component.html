@@ -1,37 +1,43 @@
 <!-- HEADER -->
 <div class="d-flex justify-content-between">
-    <h2 class="m-5 w-25">Listagem</h2>
-    <button type="button" class="btn btn-primary m-5" (click)="criarPessoa()">Criar Nova Pessoa</button>
+    <h2 class="m-5">Listagem</h2>
+    <app-criar-pessoa></app-criar-pessoa>
 </div>
 
-<!-- TABELA -->
-<table class="table w-75 mx-auto">
-    <thead>
-        <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Idade</th>
-            <th scope="col">Data de Nascimento</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Celular</th>
-            <th scope="col">Opções</th>
-        </tr>
-    </thead>
-    <tbody class="table-group-divider">
-        <tr *ngFor="let pessoa of pessoas">
-            <td>{{ pessoa.nome }}</td>
-            <td>{{ pessoa.idade }}</td>
-            <td>{{ pessoa.dataNascimento | date:'dd/MM/yyyy' }}</td>
-            <td>{{ pessoa.email }}</td>
-            <td>
-                ({{ pessoa.telefone.slice(0, 2) }}) {{ pessoa.telefone.slice(2, 6) }}-{{ pessoa.telefone.slice(6) }}
-            </td>
-            <td>
-                ({{ pessoa.celular.slice(0, 2) }}) {{ pessoa.celular.slice(2, 3) }} {{ pessoa.celular.slice(3, 7) }}-{{
-                pessoa.celular.slice(7) }}
-            </td>
-            <td> <!-- Adicione aqui opções para a pessoa --> </td>
-        </tr>
-    </tbody>
-</table>
-<router-outlet></router-outlet>
+    <!-- TABELA -->
+    <table class="table w-75 mx-auto">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let pessoa of pessoas">
+                <td class="align-middle">{{ pessoa.nome }}</td>
+                <td class="align-middle">{{ pessoa.idade }}</td>
+                <td class="align-middle">{{ pessoa.dataNascimento | date:'dd/MM/yyyy' }}</td>
+                <td class="align-middle">{{ pessoa.email }}</td>
+                <td class="align-middle">
+                    ({{ pessoa.telefone.slice(0, 2) }}) {{ pessoa.telefone.slice(2, 6) }}-{{ pessoa.telefone.slice(6) }}
+                </td>
+                <td class="align-middle">
+                    ({{ pessoa.celular.slice(0, 2) }}) {{ pessoa.celular.slice(2, 3) }} {{ pessoa.celular.slice(3, 7)
+                    }}-{{
+                    pessoa.celular.slice(7) }}
+                </td>
+                <td class="align-middle">
+                    <app-editar-pessoa [pessoaParaEditar]="pessoa"></app-editar-pessoa>
+                    <app-excluir-pessoa [pessoaParaEditar]="pessoa"></app-excluir-pessoa>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+    </div>

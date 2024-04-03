@@ -11,9 +11,9 @@ import { CriarPessoaComponent } from './_pages/criar-pessoa/criar-pessoa.compone
     HttpClientModule,
     CommonModule,
     MatDialogModule,
-    CriarPessoaComponent
+    CriarPessoaComponent,
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent, CriarPessoaComponent]
+  bootstrap: [AppComponent, CriarPessoaComponent],
 })
 export class AppModule {}

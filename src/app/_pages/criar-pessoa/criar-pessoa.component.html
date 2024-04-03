@@ -1,1 +1,143 @@
-<h1>criar-pessoa works!</h1>
+<!-- Button trigger modal -->
+<button class="btn btn-primary m-5 p-3" (click)="openModal()">Criar nova pessoa</button>
+
+<!-- Modal -->
+<div class="modal overlay align-items-center" id="createModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Nova Pessoa</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+                    <h5 class="text-center">Dados Pessoais</h5>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Nome</label>
+                                <input id="name" name="name" type="text" class="form-control" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" placeholder="seu-email@email.com" type="email"
+                                    class="form-control" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone</label>
+                                <input id="phone" name="phone" type="text" class="form-control" required="required" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="age">Idade</label>
+                                <input id="age" name="age" type="number" class="form-control" required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Data de Nascimento</label>
+                                <input id="date" name="date" placeholder="dd/mm/aaaa" max="3000-12-31" min="1900-01-01" type="date" required="required"
+                                    class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cel">Celular</label>
+                                <input id="cel" name="cel" type="text" class="form-control" required="required" maxlength="11">
+                            </div>
+                        </div>
+                        <h5 class="text-center m-3">Endereço</h5>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="street">Logradouro</label>
+                                <input id="street" name="street" type="text" required="required" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="neighborhood">Bairro</label>
+                                <input id="neighborhood" name="neighborhood" type="text" required="required"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="uf">UF</label>
+                                <select id="uf" name="uf" class="custom-select" required="required">
+                                    <option selected>Selecione o estado</option>
+                                    <option value="AC">AC</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AP">AP</option>
+                                    <option value="AM">AM</option>
+                                    <option value="BA">BA</option>
+                                    <option value="CE">CE</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PA">PA</option>
+                                    <option value="PB">PB</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PI">PI</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="RN">RN</option>
+                                    <option value="RS">RS</option>
+                                    <option value="RO">RO</option>
+                                    <option value="RR">RR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SP">SP</option>
+                                    <option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="number">Número</label>
+                                <input id="number" name="number" type="number" required="required" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Cidade</label>
+                                <input id="city" name="city" type="text" required="required" class="form-control">
+                            </div>
+                            <a (click)="addEndereco()" class="btn btn-primary btn-add">Adicionar Endereço</a>
+                        </div>
+                    </div>
+                </form>
+            <!-- Tabela de Endereços -->
+            <table *ngIf="endereco && endereco.length > 0" class="table">
+                <thead>
+                    <tr>
+                        <th>Logradouro</th>
+                        <th>Bairro</th>
+                        <th>UF</th>
+                        <th>Número</th>
+                        <th>Cidade</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let end of endereco">
+                        <td>{{end.logradouro}}</td>
+                        <td>{{end.bairro}}</td>
+                        <td>{{end.uf}}</td>
+                        <td>{{end.numero}}</td>
+                        <td>{{end.cidade}}</td>
+                        <td><a (click)="removeEnd(end.cod)">
+                            <mat-icon>delete</mat-icon>
+                        </a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button (click)="closeModal()" class="btn btn-danger">Voltar</button>
+                <button (click)="cadastrarPessoa()" class="btn btn-primary">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PessoaService } from './_services/pessoa.service';
-
+import { CriarPessoaComponent } from './_pages/criar-pessoa/criar-pessoa.component';
+import { MatIconModule } from '@angular/material/icon';
+import { EditarPessoaComponent } from './_pages/editar-pessoa/editar-pessoa.component';
+import { ExcluirPessoaComponent } from './_pages/excluir-pessoa/excluir-pessoa.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CriarPessoaComponent, EditarPessoaComponent, ExcluirPessoaComponent, MatIconModule],
 })
 export class AppComponent implements OnInit {
   title = 'listagemAngular';
