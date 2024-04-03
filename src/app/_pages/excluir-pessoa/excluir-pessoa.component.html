@@ -1,0 +1,28 @@
+<button class="btn btn-danger" (click)="openModal()">
+    <mat-icon>delete</mat-icon>
+</button>
+
+
+<!-- Modal -->
+<div class="modal overlay align-items-center" [id]="'excluir_' + pessoaParaEditar.pessoaId">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Excluir {{pessoaParaEditar.nome}}</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Deseja excluir os dados de {{pessoaParaEditar.nome}}
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button (click)="closeModal()" class="btn btn-primary">Voltar</button>
+                <button (click)="excluirPessoa(pessoaParaEditar.pessoaId)" class="btn btn-danger">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
