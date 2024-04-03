@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,7 @@ export class PessoaService {
   private chave: string;
 
   constructor(private http: HttpClient) {
-    // require('dotenv').config();
-    // this.chave = process.env['CHAVE'] ?? '';
-    this.chave = "4CFA09F3-D2E7-4386-9812-A5A285621A7F"
+    this.chave = environment.CHAVE;
   }
 
   getPessoaById(pessoaId: number): Observable<any> {

@@ -1,15 +1,16 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from "../../../environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class EnderecoService {
   private baseUrl = 'https://www.selida.com.br/avaliacaotecnica/api/Endereco';
-  private chave: string;
+  private chave: any;
 
   constructor(private http: HttpClient) {
-    this.chave = "4CFA09F3-D2E7-4386-9812-A5A285621A7F";
+    this.chave = environment.CHAVE;
   }
 
   consultarEnderecoPorId(enderecoId: number) {
